@@ -17,10 +17,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 datetime <-
-function(secs, nanos = 0)
+function(secs, nanos = 0, tzone = NULL)
 {
   tm <- .Call("ntime_datetime", secs, nanos, package = "ntime")
-  structure(tm, class = "datetime")
+  if (is.null(tzone)) {
+    tzone <- Sys.getenv("TZ")
+  }
+  structure(tm, tzone = tzone, class = "datetime")
 }
 
 nanos <-
@@ -33,4 +36,11 @@ seconds <-
 function(datetime)
 {
   .Call("ntime_get_seconds", datetime, PACKAGE = "ntime")
+}
+
+tzone <-
+function(datetime)
+{
+  # FIXME: Should this be generic?
+  attr(datetime, "tzone")
 }

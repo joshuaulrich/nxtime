@@ -13,6 +13,22 @@ test.datetime_ctor <- function() {
 }
 test.datetime_ctor()
 
+# What tzone goes in, must come out
+test.datetime_ctor_tzone <- function() {
+  N <- 10
+  secs <- sample(2e9, N) * 1.0
+  nanos <- sample(1e9-1, N) * 1.0
+  tzones <- sample(OlsonNames(), N)
+
+  for (i in 1:N) {
+    dtm <- datetime(secs[i], nanos[i], tzone = tzones[i])
+    stopifnot(seconds(dtm) == secs[i] ||
+              nanos(dtm) == nanos[i] ||
+              tzone(dtm) == tzones[i])
+  }
+}
+test.datetime_ctor_tzone()
+
 test.datetime_print <- function() {
   dtm <- datetime(1517944444, 793013171)
   pdtm <- print(dtm)

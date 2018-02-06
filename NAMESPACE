@@ -3,6 +3,7 @@ useDynLib(ntime)
 export(datetime)
 export(seconds)
 export(nanos)
+export(tzone)
 
 S3method(print, datetime)
 
