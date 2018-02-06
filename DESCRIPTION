@@ -1,0 +1,12 @@
+Package: ntime
+Type: Package
+Title: Date-Time Class with Nanosecond Resolution
+Version: 0.1-0
+Date: 2018-02-03
+Enhances: chron, xts, zoo
+Authors@R: c(
+  person(given=c("Jeffrey","A."), family="Ryan", role=c("ctb")),
+  person(given=c("Joshua","M."), family="Ulrich", role=c("cre","aut"), email="josh.m.ulrich@gmail.com")
+  )
+Description: Provide universal time handling for R's time classes, using ISO8601 formating conventions.
+License: GPL-2

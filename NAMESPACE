@@ -1,0 +1,7 @@
+useDynLib(ntime)
+
+export(datetime)
+export(seconds)
+export(nanos)
+
+S3method(print, datetime)
