@@ -22,6 +22,7 @@ print.datetime <-
 function(x, ...)
 {
   pct <- format(.POSIXct(seconds(x)), "%Y-%m-%d %H:%M:%SNS %Z")
-  dtm <- sub("NS", paste0(".", nanos(x)), pct)
+  subsec <- sprintf(".%d", as.integer(nanos(x)))
+  dtm <- sub("NS", subsec, pct)
   print(dtm)
 }

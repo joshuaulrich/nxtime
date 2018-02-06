@@ -20,3 +20,11 @@ test.datetime_print <- function() {
   stopifnot(pdtm == expected)
 }
 test.datetime_print()
+
+test.datetime_print_scipen <- function() {
+  dtm <- datetime(1517944444, 793000000)
+  pdtm <- print(dtm)
+  expected <- paste("2018-02-06 13:14:04.793000000", format(Sys.time(), "%Z"))
+  stopifnot(pdtm == expected)
+}
+test.datetime_print_scipen()
