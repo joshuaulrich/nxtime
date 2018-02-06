@@ -5,3 +5,8 @@ export(seconds)
 export(nanos)
 
 S3method(print, datetime)
+
+export(as.datetime)
+S3method(as.datetime, POSIXt)
+
+S3method(as.POSIXct, datetime)
