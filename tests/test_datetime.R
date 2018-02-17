@@ -44,3 +44,16 @@ test.datetime_print_scipen <- function() {
   stopifnot(pdtm == expected)
 }
 test.datetime_print_scipen()
+
+test.datetime_secs_nanos_length <- function() {
+  s <- c(1517944444, 1517944444)
+  n <- 793000000
+  dtm <- datetime(s, n)
+  stopifnot(length(dtm) == 2L)
+
+  s <- 1517944444
+  n <- c(793000000, 793000000)
+  dtm <- datetime(s, n)
+  stopifnot(length(dtm) == 2L)
+}
+test.datetime_secs_nanos_length()

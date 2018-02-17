@@ -31,6 +31,10 @@ ntime_datetime(SEXP _ss, SEXP _ns)
 
   int i, n = LENGTH(_ss);
 
+  if (n != LENGTH(_ns)) {
+    error("both arguments to ntime_datetime must be the same length");
+  }
+
   SEXP _y = PROTECT(allocVector(REALSXP, n));
   int64_t *y = (int64_t *)REAL(_y);
 

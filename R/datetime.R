@@ -19,6 +19,15 @@
 datetime <-
 function(secs, nanos = 0, tzone = NULL)
 {
+  # ensure secs and nanos are the same length
+  slen <- length(secs)
+  nlen <- length(nanos)
+  if (slen != nlen) {
+    mlen <- max(slen, nlen)
+    if (slen != mlen) secs <- rep(secs, length.out = mlen)
+    if (nlen != mlen) nanos <- rep(nanos, length.out = mlen)
+  }
+
   tm <- .Call("ntime_datetime", secs, nanos, package = "ntime")
   if (is.null(tzone)) {
     tzone <- Sys.getenv("TZ")
