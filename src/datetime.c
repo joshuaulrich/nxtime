@@ -29,9 +29,9 @@ ntime_datetime(SEXP _ss, SEXP _ns)
     error("both arguments to ntime_datetime must be double");
   }
 
-  int i, n = LENGTH(_ss);
+  R_xlen_t i, n = XLENGTH(_ss);
 
-  if (n != LENGTH(_ns)) {
+  if (n != XLENGTH(_ns)) {
     error("both arguments to ntime_datetime must be the same length");
   }
 
@@ -51,7 +51,7 @@ ntime_datetime(SEXP _ss, SEXP _ns)
 SEXP
 ntime_get_nanos(SEXP _x)
 {
-  int i, n = LENGTH(_x);
+  R_xlen_t i, n = XLENGTH(_x);
 
   SEXP _y = PROTECT(allocVector(REALSXP, n));
   double *y = REAL(_y);
@@ -70,7 +70,7 @@ ntime_get_nanos(SEXP _x)
 SEXP
 ntime_get_seconds(SEXP _x)
 {
-  int i, n = LENGTH(_x);
+  R_xlen_t i, n = XLENGTH(_x);
 
   SEXP _y = PROTECT(allocVector(INTSXP, n));
   int *y = INTEGER(_y);
