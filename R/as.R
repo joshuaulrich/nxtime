@@ -46,3 +46,12 @@ function(x, ...)
   p <- seconds(x) + nanos(x) / 1e9
   .POSIXct(p, tz = attr(x, "tzone"))
 }
+
+as.character.datetime <-
+function(x, ...)
+{
+  pct <- format(.POSIXct(seconds(x)), "%Y-%m-%d %H:%M:%SNS %Z")
+  subsec <- sprintf(".%d", as.integer(nanos(x)))
+  dtm <- sub("NS", subsec, pct)
+  dtm
+}

@@ -18,11 +18,15 @@
 #
 
 # datetime methods
+format.datetime <-
+function(x, ...)
+{
+  as.character(x)
+}
+
 print.datetime <-
 function(x, ...)
 {
-  pct <- format(.POSIXct(seconds(x)), "%Y-%m-%d %H:%M:%SNS %Z")
-  subsec <- sprintf(".%d", as.integer(nanos(x)))
-  dtm <- sub("NS", subsec, pct)
-  print(dtm)
+  s <- as.character(x)
+  print(s)
 }
