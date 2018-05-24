@@ -28,11 +28,10 @@ function(secs, nanos = 0, tzone = NULL)
     if (nlen != mlen) nanos <- rep(nanos, length.out = mlen)
   }
 
-  tm <- .Call("ntime_datetime", secs, nanos, package = "ntime")
   if (is.null(tzone)) {
     tzone <- Sys.getenv("TZ")
   }
-  structure(tm, tzone = tzone, class = "datetime")
+  .Call("ntime_datetime", secs, nanos, tzone, package = "ntime")
 }
 
 nanos <-

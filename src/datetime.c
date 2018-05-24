@@ -23,7 +23,7 @@
 static const int64_t ns_per_s = 1000000000LL;
 
 SEXP
-ntime_datetime(SEXP _ss, SEXP _ns)
+ntime_datetime(SEXP _ss, SEXP _ns, SEXP _tz)
 {
   if (TYPEOF(_ss) != REALSXP || TYPEOF(_ns) != REALSXP) {
     error("both arguments to ntime_datetime must be double");
@@ -44,6 +44,8 @@ ntime_datetime(SEXP _ss, SEXP _ns)
     y[i] = ((int64_t)ss[i]) * ns_per_s + (int64_t)ns[i];
   }
 
+  setAttrib(_y, R_ClassSymbol, mkString("datetime"));
+  setAttrib(_y, install("tzone"), _tz);
   UNPROTECT(1);
   return _y;
 }
