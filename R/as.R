@@ -35,8 +35,7 @@ function(x, ...)
   sec <- as.double(x)
   ms <- sec * 1e3 - trunc(sec) * 1e3
 
-  dtm <- datetime(sec, ms * 1e6)
-  structure(dtm, tzone = attr(x, "tzone"), class = "datetime")
+  datetime(sec, ms * 1e6, tzone(x))
 }
 
 # POSIXt
