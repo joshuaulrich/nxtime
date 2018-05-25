@@ -31,16 +31,18 @@ test.datetime_ctor_tzone()
 
 test.datetime_print <- function() {
   dtm <- datetime(1517944444, 793013171)
+  pct <- .POSIXct(1517944444, tz = Sys.timezone())
   pdtm <- print(dtm)
-  expected <- paste("2018-02-06 13:14:04.793013171", format(Sys.time(), "%Z"))
+  expected <- paste("2018-02-06 13:14:04.793013171", format(pct, "%Z"))
   stopifnot(pdtm == expected)
 }
 test.datetime_print()
 
 test.datetime_print_scipen <- function() {
   dtm <- datetime(1517944444, 793000000)
+  pct <- .POSIXct(1517944444, tz = Sys.timezone())
   pdtm <- print(dtm)
-  expected <- paste("2018-02-06 13:14:04.793000000", format(Sys.time(), "%Z"))
+  expected <- paste("2018-02-06 13:14:04.793000000", format(pct, "%Z"))
   stopifnot(pdtm == expected)
 }
 test.datetime_print_scipen()
