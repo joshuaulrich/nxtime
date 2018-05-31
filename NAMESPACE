@@ -6,6 +6,9 @@ export(nanos)
 export(tzone)
 
 S3method(print, datetime)
+S3method(tzone, datetime)
+S3method(tzone, default)
+S3method(`tzone<-`, datetime)
 
 export(as.datetime)
 S3method(as.datetime, POSIXt)

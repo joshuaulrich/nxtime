@@ -45,10 +45,3 @@ function(datetime)
 {
   .Call("ntime_get_seconds", datetime, PACKAGE = "ntime")
 }
-
-tzone <-
-function(datetime)
-{
-  # FIXME: Should this be generic?
-  attr(datetime, "tzone")
-}
